@@ -1,11 +1,10 @@
 from discord import Intents
-from src.bot import Bot
+from bot import Bot
 from dotenv import load_dotenv
 import os
 
 
-def main():
-    load_dotenv()
+def main(token):
     Bot_intents = Intents.none()
     Bot_intents.guilds = True
     Bot_intents.emojis = True
@@ -16,8 +15,7 @@ def main():
     Bot_intents.guild_reactions = True
     Bot_intents.dm_reactions = True
     Totten = Bot(Bot_intents)
-    Totten.run(os.getenv("TOKEN"))
+    Totten.run(token)
 
-
-if __name__ == "__main__":
-    main()
+load_dotenv()
+main(os.getenv("TOKEN"))

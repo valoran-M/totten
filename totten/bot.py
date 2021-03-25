@@ -50,3 +50,17 @@ class Bot(discord.Client):
         )
         await self.__channel_logs.send(embed=embedVar)
 
+    async def on_message(self, message):
+        """
+        event when the bot detecte new message
+
+        Paramaters
+        ----------
+        message : discord.Message
+            message recive
+        
+        Return
+        ------
+        None
+        """
+        
