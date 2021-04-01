@@ -22,6 +22,10 @@ class Bingo():
         while rep != self.inc:
             guess = await client.wait_for(event='message', check=is_correct)
             rep = int(guess.content)
+            if(rep) > self.inc and self.indic:
+                await self.channel.send("Ton nombre est trop grand")
+            if(rep) < self.inc and self.indic:
+                await self.channel.send("Ton nombre est trop petit")
         await self.channel.send(
             f"Bravo, le nombre était {self.inc}", file=File("images/toutou.png")
         )
