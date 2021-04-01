@@ -25,7 +25,7 @@ class Bot(discord.Client):
         date = datetime.datetime.now()
         embedVar = discord.Embed(
             title="Ready",
-            description="Logged as {}".format(self.user),
+            description=f"Logged as {self.user}",
             color=0x00FF00,
             timestamp=date,
         )
@@ -46,7 +46,7 @@ class Bot(discord.Client):
         date = datetime.datetime.now()
         embedVar = discord.Embed(
             title="Resume",
-            description="Logged as {}".format(self.user),
+            description=f"Logged as {self.user}",
             color=0x0000FF,
             timestamp=date,
         )

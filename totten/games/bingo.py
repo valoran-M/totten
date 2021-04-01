@@ -32,5 +32,5 @@ class Bingo:
                 #await self.channel.send("Your number is to small")
                 await guess.add_reaction('⬆')
         await self.channel.send(
-            f"{guess.author.mention}\n🎉Well done, the number was {self.inc} 🎉"
+            f"{guess.author.mention}\n🎉Well done, the number was {self.inc}🎉"
         )
