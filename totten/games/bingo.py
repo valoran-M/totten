@@ -1,25 +1,27 @@
-from discord import Message
+from discord import Message, Client, File
+from random import randint
 
 class Bingo():
     """
-    """
-    def __init__(message):
-        commande = message.split(' ')
+	"""
 
-    
-    def launch():
-        number = int(message.content.split()[1])
+    def __init__(self, message):
+        commande = message.content.split(' ')
+        self.number = int(commande[1])
+        self.indic = True if len(commande) == 3 and commande[2] == 'indic' else False
+        self.inc = randint(1, self.number)
+        self.channel = message.channel
 
-		def is_correct(m):
-			return m.channel == message.channel and m.content.isdigit()
+    async def launch(self, client):
+        def is_correct(m):
+            return m.channel == self.channel and m.content.isdigit()
 
-		await message.channel.send(f"Le bingo commence ! Trouve le nombre entre 1 et {number}")
-		n = randint(1,number)
-		rep = -1
-		print(n)
-		while rep != n:
-			guess = await self.wait_for('message', check=is_correct)
-			rep = int(guess.content)
-		await message.channel.send(f'Bravo, le nombre était {n}')
-		await message.channel.send(file=discord.File('toutou.png'))
-
+        await self.channel.send(f"Le bingo commence ! Trouve le nombre entre 1 et {self.number}")
+        rep = -1
+        print(self.inc)
+        while rep != self.inc:
+            guess = await client.wait_for(event='message', check=is_correct)
+            rep = int(guess.content)
+        await self.channel.send(
+            f"Bravo, le nombre était {self.inc}", file=File("images/toutou.png")
+        )

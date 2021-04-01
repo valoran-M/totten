@@ -66,4 +66,4 @@ class Bot(discord.Client):
         None
         """
         game = Game(message, "tt?")
-        game.launch()
+        await game.launch(self)
