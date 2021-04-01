@@ -26,9 +26,11 @@ class Bingo:
             guess = await client.wait_for(event="message", check=is_correct)
             rep = int(guess.content)
             if (rep) > self.inc and self.indic:
-                await self.channel.send("Your number is to big")
+                #await self.channel.send("Your number is to big")
+                await guess.add_reaction('⬇')
             if (rep) < self.inc and self.indic:
-                await self.channel.send("Your number is to small")
+                #await self.channel.send("Your number is to small")
+                await guess.add_reaction('⬆')
         await self.channel.send(
             f"{guess.author.mention}\n🎉Well done, the number was {self.inc} 🎉"
         )
