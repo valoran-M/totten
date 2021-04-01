@@ -1,6 +1,7 @@
 import discord
 import datetime
 
+from game import Game
 
 class Bot(discord.Client):
     def __init__(self, Myintents):
@@ -64,4 +65,5 @@ class Bot(discord.Client):
         ------
         None
         """
-        
+        game = Game(message, "tt?")
+        game.launch()
