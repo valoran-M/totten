@@ -17,6 +17,7 @@ class Bot(discord.Client):
         ------
         None
         """
+        print('Load')
         self.__guild_suport = self.get_guild(820416618101735424)
         self.__channel_logs = self.__guild_suport.get_channel(820417825072087112)
 
