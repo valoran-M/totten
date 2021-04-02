@@ -1,5 +1,6 @@
 from discord import Message, Client, File
 from random import randint
+from time import time
 import csv
 
 class Pokemon:
@@ -24,13 +25,15 @@ class Pokemon:
             return m.channel == self.channel and m.author == self.author
 
         await self.channel.send(f"What is this Pokemon ? ")
+        t1 = time()
         await self.channel.send(file=File(self.chemin))
         print(self.name)
         message = await client.wait_for(event="message", check=is_correct)
+        t2 = time()
         guess = message.content.lower()
         if guess == self.name:
             await self.channel.send(
-                f"{message.author.mention}\n🎉Well done, the Pokemon was {self.name}🎉"
+                f"{message.author.mention}\n🎉Well done, the Pokemon was {self.name}🎉 (found in {t2-t1:.1f} secondes)"
             )
         else:
             await self.channel.send(
