@@ -2,6 +2,7 @@ from discord import Message
 
 from games.bingo import Bingo
 from games.capital import Capital
+from games.pokemon import Pokemon
 
 class Game():
     """
@@ -18,5 +19,8 @@ class Game():
         if(self.game == "capital"):
             capital = Capital(self.message)
             await capital.launch(client)
+        if(self.game == "pokemon"):
+            pokemon = Pokemon(self.message)
+            await pokemon.launch(client)
         return   
     
