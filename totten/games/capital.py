@@ -9,7 +9,7 @@ class Capital:
     def __init__(self, message):
         self.channel = message.channel
         self.author = message.author
-        f = open("images/concap.csv","r")
+        f = open("donnees/concap.csv","r")
         table = list(csv.reader(f, delimiter=','))
         f.close()
         n = randint(1,len(table))
