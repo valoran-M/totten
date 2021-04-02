@@ -10,14 +10,14 @@ class Pokemon:
     def __init__(self, message):
         self.channel = message.channel
         self.author = message.author
-        f = open("images/pokemonTri.csv","r")
+        f = open("donnees/pokemonTri.csv","r")
         table = list(csv.reader(f, delimiter=','))
         f.close()
         n = randint(1,len(table))
         self.name = table[n]
         self.pokemon = self.name[0] + '.png'
         self.name = self.name[0]
-        self.chemin = "images/images/" + self.pokemon
+        self.chemin = "donnees/images/" + self.pokemon
 
     async def launch(self, client):
         
