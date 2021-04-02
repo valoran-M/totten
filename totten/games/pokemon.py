@@ -13,11 +13,26 @@ class Pokemon:
         table = list(csv.reader(f, delimiter=','))
         f.close()
         n = randint(1,len(table))
-        self.pokemon = table[n]
-        self.pokemon = self.pokemon[0] + '.png'
+        self.name = table[n]
+        self.pokemon = self.name[0] + '.png'
+        self.name = self.name[0]
         self.chemin = "images/images/" + self.pokemon
 
     async def launch(self, client):
         
-        await self.channel.send(f"{self.pokemon} : ")
+        def is_correct(m):
+            return m.channel == self.channel and m.author == self.author
+
+        await self.channel.send(f"What is this Pokemon ? ")
         await self.channel.send(file=File(self.chemin))
+        print(self.name)
+        message = await client.wait_for(event="message", check=is_correct)
+        guess = message.content.lower()
+        if guess == self.name:
+            await self.channel.send(
+                f"{message.author.mention}\n🎉Well done, the Pokemon was {self.name}🎉"
+            )
+        else:
+            await self.channel.send(
+                f"{message.author.mention}\nSorry, the Pokemon was {self.name}"
+            )
