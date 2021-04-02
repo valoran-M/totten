@@ -30,7 +30,7 @@ class Bot(discord.Client):
             timestamp=date,
         )
         await self.__channel_logs.send(embed=embedVar)
-        await self.change_presence(activity=discord.Game(name="tt/help for doc"))
+        await self.change_presence(activity=discord.Game(name="tt?help for doc"))
 
     async def on_resumed(self):
         """
@@ -65,5 +65,9 @@ class Bot(discord.Client):
         ------
         None
         """
-        game = Game(message, "tt?")
-        await game.launch(self)
+        if(message.content.startswith("tt?play")):
+            if len(message.content.split(' ')) < 2:
+                await message.channel.send(f"{message.author.mention}\nI do not have a game in parameter")
+                return
+            game = Game(message, "tt?")
+            await game.launch(self)

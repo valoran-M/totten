@@ -9,8 +9,8 @@ class Game():
     """
     def __init__(self, message, prefix):
         commande = message.content.split(' ')
-        self.game = commande[0][len(prefix):]
-        self.message = message
+        self.game = commande[1]
+        self.message = message        
 
     async def launch(self, client):
         if(self.game == "bingo"):

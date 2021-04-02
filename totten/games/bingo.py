@@ -8,8 +8,8 @@ class Bingo:
 
     def __init__(self, message):
         commande = message.content.split(" ")
-        self.number = int(commande[1])
-        self.indic = True if len(commande) == 3 and commande[2] == "indic" else False
+        self.number = int(commande[2])
+        self.indic = True if len(commande) == 4 and commande[3] == "indic" else False
         self.inc = randint(1, self.number)
         self.channel = message.channel
 
