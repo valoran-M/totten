@@ -77,7 +77,7 @@ class Bot(discord.Client):
             if len(message.content.split(' ')) < 2:
                 await message.channel.send(f"{message.author.mention}\nYou didn't give me a person")
                 return
-            mention = message.mentions[0]
+            mention = message.mentions[0].mention
             love = randint(0,100)
             await message.channel.send(f"{love}% between {message.author.mention} and {mention} ❤")
             
