@@ -1,5 +1,6 @@
 import discord
 import datetime
+from random import randint
 
 from game import Game
 
@@ -71,3 +72,12 @@ class Bot(discord.Client):
                 return
             game = Game(message, "tt?")
             await game.launch(self)
+        
+        if(message.content.startswith("tt?love")):
+            if len(message.content.split(' ')) < 2:
+                await message.channel.send(f"{message.author.mention}\nYou didn't give me a person")
+                return
+            mention = message.mentions[0]
+            love = randint(0,100)
+            await message.channel.send(f"{love}% between {message.author.mention} and {mention} ❤")
+            
