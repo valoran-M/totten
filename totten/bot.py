@@ -79,5 +79,8 @@ class Bot(discord.Client):
                 return
             mention = message.mentions[0].mention
             love = randint(0,100)
-            await message.channel.send(f"{love}% between {message.author.mention} and {mention} ❤")
-            
+            await message.channel.send(f"__{love}%__ of love between {message.author.mention} and {mention} ❤")
+        
+        if(message.content.startswith("tt?pp")):
+            pfp = message.author.avatar_url
+            await message.channel.send(pfp)
