@@ -3,7 +3,7 @@ from discord import Message
 from games.bingo import Bingo
 from games.capital import Capital
 from games.pokemon import Pokemon
-from games.RPS import RPS
+from games.rps import RPS
 
 class Game():
     """
