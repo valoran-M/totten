@@ -5,6 +5,7 @@ from games.capital import Capital
 from games.pokemon import Pokemon
 from games.rps import RPS
 from games.coin import Coin
+from games.pourcb import Pourcb
 
 class Game():
     """
@@ -30,5 +31,8 @@ class Game():
         if(self.game == "coin"):
             coin = Coin(self.message)
             await coin.launch(client)
+        if(self.game == "pourcb"):
+            pourcb = Pourcb(self.message)
+            await pourcb.launch(client)
         return   
     
