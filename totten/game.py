@@ -4,6 +4,7 @@ from games.bingo import Bingo
 from games.capital import Capital
 from games.pokemon import Pokemon
 from games.rps import RPS
+from games.coin import Coin
 
 class Game():
     """
@@ -26,5 +27,8 @@ class Game():
         if(self.game == "rps"):
             rps = RPS(self.message)
             await rps.launch(client)
+        if(self.game == "coin"):
+            coin = Coin(self.message)
+            await coin.launch(client)
         return   
     
